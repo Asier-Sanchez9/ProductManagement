@@ -31,10 +31,10 @@ public class Shop {
 
 
         pm.printProductReport(p1);
-        pm.reviewProduct(p1, Rating.FOUR_STAR, "Nice hot cup of tea");
+        pm.reviewProduct(p1, Rating.FOUR_STAR, "Muy buen te");
         pm.reviewProduct(p1, Rating.ONE_STAR, "Meh");
         pm.reviewProduct(p1, Rating.ONE_STAR, "No esta tan bueno");
-        pm.reviewProduct(p1, Rating.FIVE_STAR, "Is the best hot cup of tea i drink in all my life");
+        pm.reviewProduct(p1, Rating.FIVE_STAR, "Este té me ha cambiado la vida");
         pm.reviewProduct(p1, Rating.THREE_STAR, "Not bad");
         pm.reviewProduct(p1, Rating.FOUR_STAR, "Really good");
         pm.printProductReport(p1);
