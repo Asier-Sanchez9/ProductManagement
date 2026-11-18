@@ -16,4 +16,8 @@ public record Review(Rating rating, String comments) implements  Comparable<Revi
     public int compareTo(Review other) {
         return other.rating().ordinal() - this.rating().ordinal();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e06e266fa26f02526319065a84211e1aa7522c2f

@@ -116,4 +116,8 @@ public sealed abstract class Product implements Rateable <Product>permits Food, 
     protected void m(){
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e06e266fa26f02526319065a84211e1aa7522c2f
