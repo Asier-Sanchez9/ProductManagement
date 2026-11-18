@@ -70,7 +70,12 @@ public class Shop {
 
         pm.printProductReport();
 
-        p1 = pm.reviewProduct(p1,Rating.FOUR_STAR,"Este cafe es una mierda");
+        p1 = pm.reviewProduct(p1,Rating.FOUR_STAR,"Este cafe esta muy bueno");
+        p1 = pm.reviewProduct(p1,Rating.THREE_STAR,"Este cafe esta bueno");
+        p1 = pm.reviewProduct(p1,Rating.TWO_STAR,"Intomable");
+        p1 = pm.reviewProduct(p1,Rating.FIVE_STAR,"Este cafe me ha cambiado la vida");
+        p1 = pm.reviewProduct(p1,Rating.ONE_STAR,"Este cafe es una mierda");
+        p1 = pm.reviewProduct(p1,Rating.NOT_RATED,"Este cafe es una cosa");
         pm.printProductReport();
 
 
