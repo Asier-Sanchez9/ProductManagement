@@ -24,8 +24,4 @@ public interface Rateable <T>{
         return (stars>=0 && stars <= 5) ? Rating.values() [stars] : DEFAULT_RATING;
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e06e266fa26f02526319065a84211e1aa7522c2f
