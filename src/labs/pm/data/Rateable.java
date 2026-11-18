@@ -1,25 +1,27 @@
+/*
+ * Copyright (c) 2026.
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
+
 package labs.pm.data;
 
-@FunctionalInterface
-
+/**
+ * @author manana
+ **/
 public interface Rateable <T>{
-    // Static, final y public (por defecto)
-    public static final Rating DEFAULT_RATING = Rating.NOT_RATED;
 
-    public abstract T applyRating(Rating rating);
+    public static final Rating DEFAULT_RATING = Rating.NOT_RATED;   // Ya es public static final de manera implicita vamos que los puedes quitar y sería lo ismo
+
+    public abstract T applyRating(Rating rating);        // abstract ya viene implicito y public también
 
     public default Rating getRating(){
         return DEFAULT_RATING;
     }
 
-    public static Rating convert(int stars){
-        // method logic will be assed here
-//        Rating [] valores = Rating.values();
-//        return (stars >= 0 && stars <=5) ? valores [stars]: DEFAULT_RATING;
-        return (stars >= 0 && stars <=5) ? Rating.values() [stars]: DEFAULT_RATING;
+    public static Rating converrt (int stars){
+        return (stars>=0 && stars <= 5) ? Rating.values() [stars] : DEFAULT_RATING;
     }
-
-
-
 
 }
