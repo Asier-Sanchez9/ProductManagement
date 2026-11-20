@@ -8,7 +8,6 @@
 package labs.pm.data;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -76,7 +75,7 @@ public sealed abstract class Product implements Rateable <Product>permits Food, 
      * value of the discount
      */
 
-    public BigDecimal getDiscountRate(){
+    public BigDecimal getDiscount(){
         return price.multiply(DISCOUNT_RATE).setScale(2, HALF_UP);
     }
 
@@ -86,7 +85,7 @@ public sealed abstract class Product implements Rateable <Product>permits Food, 
 
     @Override
     public String toString() {
-        return id + ", " + name + ", " + price + ", " + getDiscountRate() + ", " + rating.getStars() + ", " + getBestBefore();
+        return id + ", " + name + ", " + price + ", " + getDiscount() + ", " + rating.getStars() + ", " + getBestBefore();
     }
 
     public abstract Product applyRating(Rating newRating);

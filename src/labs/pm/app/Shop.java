@@ -49,7 +49,7 @@ public class Shop {
 
                 Product p3 = pm.createProduct(103, "Cake",
                         BigDecimal.valueOf(3.99), Rating.NOT_RATED,
-                        LocalDate.now().plusDays(2));
+                        LocalDate.now().plusDays(0));
                 p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "Very nice cake");
                 p3 = pm.reviewProduct(p3, Rating.FOUR_STAR, "Good, but I've expected more chocolate");
                 p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "This cake is perfect!");
@@ -91,6 +91,9 @@ public class Shop {
                         priceSorter);
                 pm.printProducts(p -> p.getPrice().floatValue() < 4,
                         priceSorter.thenComparing(ratingSorter).reversed());
+
+                pm.getDiscounts().forEach((k,v) -> System.out.println(k + "\t" + v));
+
 
         }
 

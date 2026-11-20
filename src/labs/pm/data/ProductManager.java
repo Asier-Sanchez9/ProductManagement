@@ -162,6 +162,23 @@ public class ProductManager {
         System.out.println(txt);
     }
 
+    public Map<String,String> getDiscounts(){
+
+        return products.keySet()
+                        .stream()
+                        .collect(
+                                Collectors.groupingBy(
+                                        (Product product) -> product.getRating().getStars(),
+                                Collectors.collectingAndThen(
+                                        Collectors.summingDouble(
+                                                (Product product) -> product.getDiscount().doubleValue()
+                                        ),
+                                        (Double discount) -> formatter.moneyFomart.format(discount)
+                                )
+                        ));
+
+    }
+
     public Product findProduct (int id){
 
         return products.keySet()

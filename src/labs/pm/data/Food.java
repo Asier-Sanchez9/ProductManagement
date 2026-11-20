@@ -38,9 +38,9 @@ public final class Food extends Product{
     }
 
     @Override
-    public BigDecimal getDiscountRate() {
+    public BigDecimal getDiscount() {
         return (bestBefore.isEqual(LocalDate.now())) ?
-                super.getDiscountRate() : BigDecimal.ZERO;
+                super.getDiscount() : BigDecimal.ZERO;
     }
 
 
