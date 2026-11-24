@@ -31,14 +31,18 @@ public class Shop {
                 Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
 
 
-                pm.printProductReport(p1);
-                p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Nice tea");
+
+            try {
+                pm.printProductReport(101);
+                pm.parseReview("101,4,Nice hot cup of tea");
+                pm.parseReview("Despues de esto nos vamos a casa");
+                p1 = pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
                 p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "Meh");
                 p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "No esta tan bueno");
-                p1 = pm.reviewProduct(p1, Rating.FIVE_STAR, "Este té me ha cambiado la vida");
+                p1 = pm.reviewProduct(p1, Rating.FIVE_STAR, "Is the best hot cup of tea i drink in all my life");
                 p1 = pm.reviewProduct(p1, Rating.THREE_STAR, "Not bad");
                 p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Really good");
-                pm.printProductReport(p1);
+                pm.printProductReport(101);
 
                 Product p2 = pm.createProduct(102, "Coffee",
                         BigDecimal.valueOf(1.99), Rating.NOT_RATED);
@@ -94,6 +98,9 @@ public class Shop {
 
                 pm.getDiscounts().forEach((k,v) -> System.out.println(k + "\t" + v));
 
+            } catch (ProductManagerException e) {
+                    Throwable cause = e.getCause();
+            }
 
         }
 
