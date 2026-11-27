@@ -50,6 +50,7 @@ public class Shop {
                 pm.printProductReport(101);
 
                 pm.parseProduct("D,102,Coffee,1.99,0,25/11/26");
+
                 pm.parseReview("102,3,Coffee was ok");
                 pm.parseReview("102,1,Where is the milk?!");
                 pm.parseReview("102,5,It's perfect with ten spoons of sugar!");

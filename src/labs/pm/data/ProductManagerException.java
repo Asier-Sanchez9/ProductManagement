@@ -1,6 +1,6 @@
 package labs.pm.data;
 
-public class ProductManagerException extends Exception {
+public class ProductManagerException extends RuntimeException {
     public ProductManagerException(String message) {
         super(message);
     }
