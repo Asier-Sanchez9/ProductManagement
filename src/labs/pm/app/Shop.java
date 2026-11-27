@@ -26,64 +26,67 @@ public class Shop {
 
         public static void main(String[] args) {
 
-                ProductManager pm = new ProductManager("es-ES");
-
-                Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-
-
-
             try {
+                ProductManager pm = new ProductManager("es-ES");
+                System.setProperty("java.locale-providers","HOST,CLDR");
+
+//                Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+                pm.parseProduct("D,101,Tea,1.99,0,25/11/26");
+
                 pm.printProductReport(101);
                 pm.parseReview("101,4,Nice hot cup of tea");
-                pm.parseReview("Despues de esto nos vamos a casa");
-                p1 = pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
-                p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "Meh");
-                p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "No esta tan bueno");
-                p1 = pm.reviewProduct(p1, Rating.FIVE_STAR, "Is the best hot cup of tea i drink in all my life");
-                p1 = pm.reviewProduct(p1, Rating.THREE_STAR, "Not bad");
-                p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Really good");
+                pm.parseReview("101,1,Meh");
+                pm.parseReview("101,1,No esta tan bueno");
+                pm.parseReview("101,5,Is the best hot cup of tea i drink in all my life");
+                pm.parseReview("101,3,Not bad");
+                pm.parseReview("101,4,Really good");
+//                p1 = pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
+//                p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "Meh");
+//                p1 = pm.reviewProduct(p1, Rating.ONE_STAR, "No esta tan bueno");
+//                p1 = pm.reviewProduct(p1, Rating.FIVE_STAR, "Is the best hot cup of tea i drink in all my life");
+//                p1 = pm.reviewProduct(p1, Rating.THREE_STAR, "Not bad");
+//                p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Really good");
+
                 pm.printProductReport(101);
 
-                Product p2 = pm.createProduct(102, "Coffee",
-                        BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-                p2 = pm.reviewProduct(p2, Rating.THREE_STAR, "Coffee was ok");
-                p2 = pm.reviewProduct(p2, Rating.ONE_STAR, "Where is the milk?!");
-                p2 = pm.reviewProduct(p2, Rating.FIVE_STAR, "It's perfect with ten spoons of sugar!");
-                pm.printProductReport(p2);
+                pm.parseProduct("D,102,Coffee,1.99,0,25/11/26");
+                pm.parseReview("102,3,Coffee was ok");
+                pm.parseReview("102,1,Where is the milk?!");
+                pm.parseReview("102,5,It's perfect with ten spoons of sugar!");
 
-                Product p3 = pm.createProduct(103, "Cake",
-                        BigDecimal.valueOf(3.99), Rating.NOT_RATED,
-                        LocalDate.now().plusDays(0));
-                p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "Very nice cake");
-                p3 = pm.reviewProduct(p3, Rating.FOUR_STAR, "Good, but I've expected more chocolate");
-                p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "This cake is perfect!");
-                pm.printProductReport(p3);
+                pm.printProductReport(102);
 
-                Product p4 = pm.createProduct(104, "Cookie",
-                        BigDecimal.valueOf(2.99), Rating.NOT_RATED,
-                        LocalDate.now());
-                p4 = pm.reviewProduct(p4, Rating.THREE_STAR, "Just another cookie");
-                p4 = pm.reviewProduct(p4, Rating.THREE_STAR, "Ok");
-                pm.printProductReport(p4);
+                pm.parseProduct("F,103,Cake,3.99,0,25/11/26");
 
-                Product p5 = pm.createProduct(105, "Hot Chocolate",
-                        BigDecimal.valueOf(2.50), Rating.NOT_RATED);
-                p5 = pm.reviewProduct(p5, Rating.FOUR_STAR, "Tasty!");
-                p5 = pm.reviewProduct(p5, Rating.FOUR_STAR, "No bad at all");
-                pm.printProductReport(p5);
+                pm.parseReview("103,5,Very nice cake");
+                pm.parseReview("103,4,Good, but I've expected more chocolate");
+                pm.parseReview("103,5,This cake is perfect!");
 
-                Product p6 = pm.createProduct(106, "Chocolate",
-                        BigDecimal.valueOf(2.50), Rating.NOT_RATED,
-                        LocalDate.now().plusDays(3));
-                p6 = pm.reviewProduct(p6, Rating.TWO_STAR, "Too sweet");
-                p6 = pm.reviewProduct(p6, Rating.THREE_STAR, "Better then cookie");
-                p6 = pm.reviewProduct(p6, Rating.TWO_STAR, "Too bitter");
-                p6 = pm.reviewProduct(p6, Rating.ONE_STAR, "I don't get it!");
-                pm.printProductReport(p6);
+                pm.printProductReport(103);
 
+                pm.parseProduct("F,104,Cookie,2.99,0,25/11/26");
 
-//                pm.printProducts((pr1,pr2) ->
-//                        pr1.getRating().ordinal() - pr2.getRating().ordinal());
+                pm.parseReview("104,3,Just another cookie");
+                pm.parseReview("104,3,Ok");
+
+                pm.printProductReport(104);
+
+                pm.parseProduct("D,105,Hot Chocolate,2.50,0,25/11/26");
+
+                pm.parseReview("105,4,Tasty!");
+                pm.parseReview("105,4,No bad at all");
+
+                pm.printProductReport(105);
+
+                pm.parseProduct("F,106,Chocolate,2.50,0,28/11/26");
+
+                pm.parseReview("106,2,Too sweet");
+                pm.parseReview("106,3,Better then cookie");
+                pm.parseReview("106,2,Too bitter");
+                pm.parseReview("106,1,I don't get it!");
+
+                pm.printProductReport(106);
+
 
                 Comparator<Product> priceSorter = (pr1, pr2) ->
                         pr2.getPrice().compareTo(pr1.getPrice());
